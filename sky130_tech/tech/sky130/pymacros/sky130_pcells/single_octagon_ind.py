@@ -44,7 +44,7 @@ class single_octagon_ind_Generator(pya.PCellDeclarationHelper):
 
     def display_text_impl(self):
         # Provide a descriptive text for the cell
-        return "( single_octagon" + str(self.N) + " width = "+str(self.W) +")"
+        return f"( single_octagon{str(self.N)} width = {str(self.W)})"
 
     def coerce_parameters_impl(self):
 
@@ -144,20 +144,19 @@ class single_octagon_ind_Generator(pya.PCellDeclarationHelper):
                         ycor = ycor - Side_lengthCor + W + S
                         ypos = 1
                         ver_side = 0
-                else:  # drawing the side with angle change in xaxis and yaxis
-                    if diagonal == 1:
-                        xcor = xcor + Side_lengthCor * X_angle
-                        ycor = ycor + Side_lengthCor * Y_angle
-                        if check1 == 1:
-                            xcor = xcor - 2 * Side_lengthCor * X_angle
-                        check1 = check1 + 1
-                        if check1 == 2:
-                            diagonal = 0
-                            check1 = 0
-                    else:
-                        xcor = xcor - Side_lengthCor * X_angle
-                        ycor = ycor - Side_lengthCor * Y_angle
-                        diagonal = 1
+                elif diagonal == 1:
+                    xcor = xcor + Side_lengthCor * X_angle
+                    ycor = ycor + Side_lengthCor * Y_angle
+                    if check1 == 1:
+                        xcor = xcor - 2 * Side_lengthCor * X_angle
+                    check1 = check1 + 1
+                    if check1 == 2:
+                        diagonal = 0
+                        check1 = 0
+                else:
+                    xcor = xcor - Side_lengthCor * X_angle
+                    ycor = ycor - Side_lengthCor * Y_angle
+                    diagonal = 1
                 PointCoordinates = pya.Point(xcor, ycor)
                 all_points.append(PointCoordinates)
             xcor = (i + 1) * (W + S) / Z_angle

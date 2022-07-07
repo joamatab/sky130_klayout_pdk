@@ -59,7 +59,9 @@ class mimcap_m4():
         self.pin0 = pin0
         self.pin1 = pin1
         self.cell = self.layout.create_cell(
-            "sky130_fd_pr__cap_mim_m3_2_w"+str(w)+"_l"+str(l))
+            f"sky130_fd_pr__cap_mim_m3_2_w{str(w)}_l{str(l)}"
+        )
+
         self.w = w * self.percision
         self.l = l * self .percision
         self.connection_labels=connection_labels
@@ -75,12 +77,18 @@ class mimcap_m4():
             box.width(), met_via4_enc, via4_spc, via4_size)
         num_via4_2, via4_free_spc_2 = self.number_spc_contacts(
             box.height(), met_via4_enc, via4_spc, via4_size)
-        via4_arr = pya.CellInstArray(via4_cell.cell_index(), pya.Trans(
-            pya.Point(box.p1.x+via4_free_spc_1 / 2, box.p1.y + via4_free_spc_2 / 2)),
+        return pya.CellInstArray(
+            via4_cell.cell_index(),
+            pya.Trans(
+                pya.Point(
+                    box.p1.x + via4_free_spc_1 / 2, box.p1.y + via4_free_spc_2 / 2
+                )
+            ),
             pya.Vector(via4_spc + via4_size, 0),
             pya.Vector(0, via4_spc + via4_size),
-            num_via4_1, num_via4_2)
-        return via4_arr
+            num_via4_1,
+            num_via4_2,
+        )
 
     def draw_cap(self):
         
@@ -123,7 +131,7 @@ class mimcap_m4():
         self.cell.shapes(self.l_met5).insert(met5_side_box)
 
         print('--->', self.layout.cell("via4"))
-        if self.layout.cell("via4") == None:
+        if self.layout.cell("via4") is None:
             via4_cell = self.layout.create_cell("via4")
             print('--->', self.layout.cell("via4"))
         else:

@@ -58,7 +58,9 @@ class mimcap():
         self.l_prbndry = self.layout.layer(prbndry_lay_num, prbndry_lay_dt)
         self.percision = 1/self.layout.dbu
         self.cell = self.layout.create_cell(
-            "sky130_fd_pr__cap_mim_m3_1_w"+str(w)+"_l"+str(l))
+            f"sky130_fd_pr__cap_mim_m3_1_w{str(w)}_l{str(l)}"
+        )
+
         self.w = w * self.percision
         self.l = l * self .percision
         self.pin0 = pin0
@@ -77,13 +79,18 @@ class mimcap():
             box.width(), met_via3_enc_1, via3_spc, via3_size)
         num_via3_2, via3_free_spc_2 = self.number_spc_contacts(
             box.height(), met_via3_enc_2, via3_spc, via3_size)
-        via3_arr = pya.CellInstArray(via3_cell.cell_index(), pya.Trans(
-            pya.Point(box.p1.x+via3_free_spc_1 / 2, box.p1.y + via3_free_spc_2 / 2)),
+        return pya.CellInstArray(
+            via3_cell.cell_index(),
+            pya.Trans(
+                pya.Point(
+                    box.p1.x + via3_free_spc_1 / 2, box.p1.y + via3_free_spc_2 / 2
+                )
+            ),
             pya.Vector(via3_spc + via3_size, 0),
             pya.Vector(0, via3_spc + via3_size),
-            num_via3_1, num_via3_2)
-
-        return via3_arr
+            num_via3_1,
+            num_via3_2,
+        )
 
     def draw_cap(self):
 
@@ -125,7 +132,7 @@ class mimcap():
         self.cell.shapes(self.l_met4).insert(self.met4_side_box)
 
         # print('--->', self.layout.cell("via3"))
-        if self.layout.cell("via3") == None:
+        if self.layout.cell("via3") is None:
             via3_cell = self.layout.create_cell("via3")
             # print('--->', self.layout.cell("via3"))
         else:

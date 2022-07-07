@@ -129,12 +129,11 @@ class ViaGenerator(pya.PCellDeclarationHelper):
         CU_via = pya.Box(0,0,0.18*ru_dbu,0.18*ru_dbu)
         if self.metal == "CU":
             self.cell.shapes(l_via).insert(CU_via)
+        elif self.via_type == "via":
+            self.cell.shapes(l_via).insert(AL_via)
+        elif self.via_type == "via2":
+            self.cell.shapes(l_via2).insert(AL_via2)
+        elif self.via_type == "via3":
+            self.cell.shapes(l_via3).insert(AL_via3)
         else:
-            if self.via_type == "via":
-                self.cell.shapes(l_via).insert(AL_via)
-            elif self.via_type == "via2":
-                self.cell.shapes(l_via2).insert(AL_via2)
-            elif self.via_type == "via3":
-                self.cell.shapes(l_via3).insert(AL_via3)
-            else :
-                self.cell.shapes(l_via4).insert(AL_via4)
+            self.cell.shapes(l_via4).insert(AL_via4)

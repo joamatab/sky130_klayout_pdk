@@ -53,10 +53,20 @@ class pmos5d10_gen(pya.PCellDeclarationHelper):
                    "Connected Gates", default=1)
 
     def display_text_impl(self):
-        # Provide a descriptive text for the cell
-        cell_str = "pmos5_w" + str(self.w).replace(".", "p") + "u_l" + str(self.l).replace(".", "p") + "u_nf" + str(
-            self.nf) + "_drain_area" + str(self.dsa) + "_gate_connection" + str(self.connection) + "alt" + str(self.n)
-        return cell_str
+        return (
+            "pmos5_w"
+            + str(self.w).replace(".", "p")
+            + "u_l"
+            + str(self.l).replace(".", "p")
+            + "u_nf"
+            + str(self.nf)
+            + "_drain_area"
+            + str(self.dsa)
+            + "_gate_connection"
+            + str(self.connection)
+            + "alt"
+            + str(self.n)
+        )
 
     def coerce_parameters_impl(self):
 

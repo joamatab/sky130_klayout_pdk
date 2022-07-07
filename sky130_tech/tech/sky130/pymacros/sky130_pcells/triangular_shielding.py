@@ -36,7 +36,7 @@ class triangular_shielding_Generator(pya.PCellDeclarationHelper):
 
     def display_text_impl(self):
         # Provide a descriptive text for the cell
-        return "( triangular_shielding spacing" + str(self.S) + " width = " + str(self.W) + ")"
+        return f"( triangular_shielding spacing{str(self.S)} width = {str(self.W)})"
 
     def coerce_parameters_impl(self):
 
