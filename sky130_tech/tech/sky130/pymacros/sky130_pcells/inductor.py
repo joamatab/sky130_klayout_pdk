@@ -53,7 +53,7 @@ class IndGenerator(pya.PCellDeclarationHelper):
 
     def display_text_impl(self):
         # Provide a descriptive text for the cell
-        return "(" + str(self.N) + " midth = "+str(self.W) +")"
+        return f"({str(self.N)} midth = {str(self.W)})"
 
     def coerce_parameters_impl(self):
 
@@ -100,7 +100,7 @@ class IndGenerator(pya.PCellDeclarationHelper):
         xcor = -Lhor / 2
         ycor = input_distance
         Shielding_with_diffusion = diffusion
-        print("shifty" + str(input_distance))
+        print(f"shifty{str(input_distance)}")
 
         # defining different parameters for different layers
         Diffusion_Width = 0.15 * PERCISION

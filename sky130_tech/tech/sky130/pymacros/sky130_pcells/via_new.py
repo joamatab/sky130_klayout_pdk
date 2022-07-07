@@ -184,15 +184,15 @@ class Via_newGenerator(pya.PCellDeclarationHelper):
             if metal == -1:
                 self.cell.shapes(l_li).insert(pya.Path([pya.Point(0, 0), pya.Point(length, 0)], width))
 
-            if metal == 0 :
+            elif metal == 0:
                 self.cell.shapes(l_met1).insert(pya.Path([pya.Point(0, 0),pya.Point(length,0)],width))
-            if metal == 1:
+            elif metal == 1:
                 self.cell.shapes(l_met2).insert(pya.Path([pya.Point(0, 0),pya.Point(length,0)],width))
-            if metal == 2:
+            elif metal == 2:
                 self.cell.shapes(l_met3).insert(pya.Path([pya.Point(0, 0),pya.Point(length,0)],width))
-            if metal == 3:
+            elif metal == 3:
                 self.cell.shapes(l_met4).insert(pya.Path([pya.Point(0, 0),pya.Point(length,0)],width))
-            if metal == 4:
+            elif metal == 4:
                 self.cell.shapes(l_met5).insert(pya.Path([pya.Point(0, 0), pya.Point(length, 0)], width))
 
         self.cell.flatten(1)

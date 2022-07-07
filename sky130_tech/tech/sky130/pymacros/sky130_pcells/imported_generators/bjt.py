@@ -51,7 +51,7 @@ import nmos18 as nmos
 from .layers_definiations import *
 import os
 repo_path = os.environ['automation_repo']
-gds_path = repo_path+"/generators/klayout/"
+gds_path = f"{repo_path}/generators/klayout/"
 class bjt(nmos.nmos18_device):
     
     n_well_diffusion_spacing = 0.34

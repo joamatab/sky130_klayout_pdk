@@ -55,7 +55,7 @@ class new_single_octagon_Generator(pya.PCellDeclarationHelper):
 
     def display_text_impl(self):
         # Provide a descriptive text for the cell
-        return "( new_single_octagon" + str(self.N) + " width = "+str(self.W) +")"
+        return f"( new_single_octagon{str(self.N)} width = {str(self.W)})"
 
     def coerce_parameters_impl(self):
 
@@ -103,7 +103,7 @@ class new_single_octagon_Generator(pya.PCellDeclarationHelper):
         xcor = -Lhor/2
         ycor = input_distance
         Shielding_with_diffusion = diffusion
-        print("shifty" + str(input_distance))
+        print(f"shifty{str(input_distance)}")
 
         # defining different parameters for different layers
         Diffusion_Width = 0.15 * PERCISION

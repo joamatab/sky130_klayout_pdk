@@ -41,7 +41,7 @@ class mimcap_1_gen(pya.PCellDeclarationHelper):
 
     def display_text_impl(self):
         # Provide a descriptive text for the cell
-        return "sky130_fd_pr__cap_mim_m3_1_w"+str(self.w)+"_l"+str(self.l)
+        return f"sky130_fd_pr__cap_mim_m3_1_w{str(self.w)}_l{str(self.l)}"
 
     def coerce_parameters_impl(self):
 
